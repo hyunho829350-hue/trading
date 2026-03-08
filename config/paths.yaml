@@ -1,0 +1,67 @@
+# ─────────────────────────────────────────────────────────
+#  AI 자동매매 설정 파일
+#  mode: paper | live
+# ─────────────────────────────────────────────────────────
+
+mode: paper                # paper(모의) / live(실전)
+
+# 계좌 설정
+account_number: ""         # 키움 계좌번호 (실전 시 입력)
+initial_capital: 800000    # 초기 자본금 (80만원)
+target_capital: 100000000  # 목표 자본금 (1억)
+
+# 텔레그램 알림
+telegram_token: ""         # 봇 토큰
+telegram_chat_id: ""       # 채팅 ID
+
+# 매매 횟수 제한
+max_buy_daily: 10          # 일일 최대 매수 횟수
+max_sell_daily: 10         # 일일 최대 매도 횟수
+max_total_daily: 20        # 합계 최대
+
+# 리스크 관리
+stop_loss: -0.02           # 손절 기본값 -2%
+take_profit: 0.03          # 익절 기본값 +3%
+trailing_stop: true        # 트레일링스탑 활성화
+trailing_pct: 0.015        # 트레일링 폭 -1.5%
+max_positions: 2           # 최대 보유 종목수
+
+# AI 서버
+ai_server_port: 5555       # ZMQ 포트
+ai_model_dir: C:\trading\models\brains
+
+# 경로 설정 (SSD C드라이브)
+db_path: C:\trading\db\trading.db
+config_dir: C:\trading\config
+log_dir: C:\trading\logs
+
+# 경로 설정 (HDD D드라이브)
+data_dir: D:\trading_data
+bar_1min:  D:\trading_data\price_bar\1min
+bar_5min:  D:\trading_data\price_bar\5min
+bar_30min: D:\trading_data\price_bar\30min
+bar_60min: D:\trading_data\price_bar\60min
+bar_day:   D:\trading_data\price_bar\day
+tick_dir:  D:\trading_data\tick
+answer_dir: D:\trading_data\answer_book\history
+backtest_dir: D:\trading_data\backtest\results
+trade_log: D:\trading_data\trade_book.csv
+
+# 수수료 (키움증권)
+buy_fee: 0.00015           # 매수 수수료 0.015%
+sell_fee: 0.00015          # 매도 수수료 0.015%
+tax_kosdaq: 0.0023         # 코스닥 거래세 0.23%
+tax_kospi: 0.0015          # 코스피 거래세 0.15%
+
+# ETF 제외 키워드
+etf_exclude:
+  - "KODEX"
+  - "TIGER"
+  - "ARIRANG"
+  - "KINDEX"
+  - "HANARO"
+  - "KOSEF"
+  - "TREX"
+  - "파생"
+  - "레버리지"
+  - "인버스"
