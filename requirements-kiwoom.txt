@@ -1,0 +1,9 @@
+# requirements-kiwoom.txt
+# 키움 OpenAPI+ 실거래 모드 추가 의존성
+# 32비트 Python 3 + run_kiwoom.bat 에서 사용
+#
+# 기본 의존성은 requirements.txt 를 먼저 설치하세요:
+#   py -3-32 -m pip install -r requirements.txt
+#   py -3-32 -m pip install -r requirements-kiwoom.txt
+
+pywin32>=306
