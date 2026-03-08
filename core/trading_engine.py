@@ -299,17 +299,17 @@ class TradingEngine:
                         new_result = self._api.send_order(
                             po.ticker, po.direction, po.quantity, po.target_price
                         )
+                        if new_result.status == "FILLED" and po.direction == "BUY":
+                            self._open_position(
+                                new_result, po.ticker, po.name,
+                                new_result.filled_price, po.quantity
+                            )
                         elif new_result.status == "PENDING":
                             po.order_result = new_result
                             po.submitted_at = now
                             po.retry_count += 1
                             with self._lock:
                                 self._pending_orders[new_result.order_id] = po
-                        if new_result.status == "FILLED" and po.direction == "BUY":
-                            self._open_position(
-                                new_result, po.ticker, po.name,
-                                new_result.filled_price, po.quantity
-                            )
 
             # Position timeout liquidation
             with self._lock:
